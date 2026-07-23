@@ -1517,6 +1517,12 @@
       });
     }
   }
+  // Per-payload initial 3D-surface colour (presence-keyed): a bake may pin its
+  // preferred default mode via meta.surf_default; otherwise the species-count
+  // heuristic above stands. (graphene ships "plain".)
+  if (D.meta && (D.meta.surf_default === "plain"
+      || D.meta.surf_default === "blend" || D.meta.surf_default === "projection"))
+    VC_MODE = D.meta.surf_default;
   initSurf3d();
   applySurfColorMode = function () {
     // capture the live (user-orbited) camera, then full rebuild through the init
